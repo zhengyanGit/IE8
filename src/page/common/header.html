@@ -1,0 +1,29 @@
+<style>
+  .zy a.active {
+    color: darkorange;
+  }
+</style>
+<ul class="zy">
+  <li><a href="#!/">首页</a></li>
+  <li><a href="#!/dd">订单</a></li>
+  <li><a href="#!/goods">商品</a></li>
+
+</ul>
+<script>
+  require(['jquery'], function () {
+    M(window).on('hashchange', function () {
+      changeNav();
+    })
+
+    changeNav();
+    function changeNav() {
+      var hash = window.location.hash.replace('#!', '');
+      for (var i = 0; i < $('.zy a').length; i++) {
+        if ($('.zy a').eq(i).attr('href').slice(2) == hash) {
+          $('.zy a').removeClass('active');
+          $('.zy a').eq(i).addClass('active')
+        }
+      }
+    }
+  })
+</script>

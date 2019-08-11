@@ -1,0 +1,16 @@
+<style>
+  .zy {
+    color: red
+  }
+</style>
+<div class="zy">
+  page-index 首页
+  <a href="javascript:;" class="push">跳商品/goods</a>
+</div>
+<script>
+  require(['utils'], function () {
+    M('.push').on('click', function () {
+      M.router.push('/goods')
+    })
+  })
+</script>
