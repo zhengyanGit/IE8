@@ -21,7 +21,7 @@
       var hash = window.location.hash.replace('#!', '');
       hash = hash.split('?')[0];
       for (var i = 0; i < $('.zy a').length; i++) {
-        if ($('.zy a').eq(i).attr('href').slice(2) == hash) {
+        if ($('.zy a').eq(i).attr('href').slice(2).split('?')[0] == hash) {
           $('.zy a').removeClass('active');
           $('.zy a').eq(i).addClass('active')
         }

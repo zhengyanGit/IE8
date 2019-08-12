@@ -86,7 +86,9 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
           }
         });
       } else { //失败
-        console.log('页面不存在');
+        if (window.location.protocol + '//' + window.location.host + '/' == window.location.href || window.location.protocol + '//' + window.location.host + '/index.html' == window.location.href) {
+          this.push('/')
+        }
         return
         this.push('/404')
       }
@@ -111,14 +113,12 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
         }
         result = '?' + result.substring(1);
       }
-      console.log('4444', result)
       return result;
     }
   };
   var routerObj = new Router({
     id: 'contain',
     beforRouter: function (from, to, next) {
-      console.log(from, to);
       if (to == '/log') {
         next('/');
       } else {
