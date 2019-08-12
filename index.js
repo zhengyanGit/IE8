@@ -7,11 +7,6 @@ require(['jquery', 'renderView', 'jqCommon', 'router'], function (M, renderView,
         path: '/goods',
         component: '/src/page/goods/index.html'
       });
-
-
-      // router.remove({
-      //   path: '/dd'
-      // })
     },
     getHead: function () {  // 加载头部
       // 头部加载
