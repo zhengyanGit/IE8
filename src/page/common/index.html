@@ -10,7 +10,10 @@
 <script>
   require(['utils'], function () {
     M('.push').on('click', function () {
-      M.router.push('/goods')
+      M.router.push('/goods', {
+        zy: '213',
+        yz: '00'
+      })
     })
   })
 </script>

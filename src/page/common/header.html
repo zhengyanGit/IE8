@@ -5,7 +5,7 @@
 </style>
 <ul class="zy">
   <li><a href="#!/">首页</a></li>
-  <li><a href="#!/dd">订单</a></li>
+  <li><a href="#!/dd?order=2123">订单</a></li>
   <li><a href="#!/goods">商品</a></li>
   <li><a href="#!/log">登入</a></li>
 </ul>
@@ -19,6 +19,7 @@
 
     function changeNav() {
       var hash = window.location.hash.replace('#!', '');
+      hash = hash.split('?')[0];
       for (var i = 0; i < $('.zy a').length; i++) {
         if ($('.zy a').eq(i).attr('href').slice(2) == hash) {
           $('.zy a').removeClass('active');

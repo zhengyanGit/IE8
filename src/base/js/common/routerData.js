@@ -21,7 +21,16 @@ define(function () {
         component: '/src/page/goods/index.html',
         title: '商品',
         chidren: [
-          {}
+          {
+            path: '/goods/list',
+            component: '/src/page/goods/list.html',
+            title: '商品列表',
+          },
+          {
+            path: '/goods/list2',
+            component: '/src/page/goods/list2.html',
+            title: '商品列表2',
+          }
         ]
       },
       {
@@ -29,7 +38,6 @@ define(function () {
         title: '订单中心',
         component: '/src/page/order/order.html'
       },
-
     ]
   }
 })

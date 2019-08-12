@@ -48,7 +48,11 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
     push: function (sendData, params) {
       var aElemen = M('<a>');
       var classStr = new Date().getTime();
-      aElemen.attr('href', '/#!' + sendData);
+      var paramsStr = '';
+      if (params) {
+        paramsStr = this.paramsChange(params);
+      }
+      aElemen.attr('href', '/#!' + sendData + paramsStr);
       aElemen.attr('display', 'none');
       aElemen.html('<span class=' + classStr + '></span>');
       M('body').append(aElemen);
@@ -56,12 +60,16 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
       M('.' + classStr).parent().remove();
     },
     next: function (url) {
+      var _this = this;
       if (url) {
-        this.push(url);
+        setTimeout(function () {
+          _this.push(url);
+        }, 30)
       }
     },
     reload: function (e) {
       var hash = window.location.hash.replace('#!', '');
+      hash = hash.split('?')[0];
       var oldUrl = '';
       if (e) {
         oldUrl = e.oldURL.split('#!')[1];
@@ -70,12 +78,11 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
       var urlObj = this.testing(hash);
       if (urlObj) {  // 匹配成功
         document.title = urlObj.title || '';
-        console.log('匹配成功', urlObj.component)
         renderView.render({
           id: '#' + this.id,  // 加载存放在哪个容器上
           url: urlObj.component,  // 加载模块的地址
           cb: function () {  //加载之后的回掉函数
-            // console.log(urlObj.path)
+            //console.log(urlObj.path)
           }
         });
       } else { //失败
@@ -97,12 +104,14 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
       return false;
     },
     paramsChange: function (params) {
-      var result = null;
+      var result = '';
       if (params) {
         for (key in params) {
-          result += key + '=' + params[key];
+          result += '&' + key + '=' + params[key];
         }
+        result = '?' + result.substring(1);
       }
+      console.log('4444', result)
       return result;
     }
   };
