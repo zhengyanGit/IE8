@@ -7,7 +7,7 @@
   <li><a href="#!/">首页</a></li>
   <li><a href="#!/dd">订单</a></li>
   <li><a href="#!/goods">商品</a></li>
-
+  <li><a href="#!/log">登入</a></li>
 </ul>
 <script>
   require(['jquery'], function () {
@@ -16,6 +16,7 @@
     })
 
     changeNav();
+
     function changeNav() {
       var hash = window.location.hash.replace('#!', '');
       for (var i = 0; i < $('.zy a').length; i++) {

@@ -55,16 +55,22 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
       M('.' + classStr).click();
       M('.' + classStr).parent().remove();
     },
+    next: function (url) {
+      if (url) {
+        this.push(url);
+      }
+    },
     reload: function (e) {
-      console.log('e', e)
       var hash = window.location.hash.replace('#!', '');
       var oldUrl = '';
       if (e) {
         oldUrl = e.oldURL.split('#!')[1];
       }
-      this.options.beforRouter && this.options.beforRouter(oldUrl, hash, 3)
+      this.options.beforRouter && this.options.beforRouter(oldUrl, hash, this.next.bind(this));
       var urlObj = this.testing(hash);
       if (urlObj) {  // 匹配成功
+        document.title = urlObj.title || '';
+        console.log('匹配成功', urlObj.component)
         renderView.render({
           id: '#' + this.id,  // 加载存放在哪个容器上
           url: urlObj.component,  // 加载模块的地址
@@ -103,8 +109,12 @@ define(['jquery', 'renderView', 'common/routerData'], function (M, renderView, r
   var routerObj = new Router({
     id: 'contain',
     beforRouter: function (from, to, next) {
-      console.log(from, to, next);
-
+      console.log(from, to);
+      if (to == '/log') {
+        next('/');
+      } else {
+        next();
+      }
     }
   });
   M.extend({
