@@ -1,12 +1,21 @@
-require(['jquery', 'renderView', 'jqCommon', 'router'], function (M, renderView, jqCommon, router) {
+require(['jquery', 'renderView', 'jqCommon', 'router'], function (M, renderView, jqCommon, Router) {
   M.define('index', {
     init: function () {
       this.getHead();
       this.getMenu();
-      router.add({
-        path: '/goods',
-        component: '/src/page/goods/index.html'
+      var router = new Router({
+        id: 'contain',
+        beforRouter: function (from, to, next) {
+          if (to == '/log') {
+            next('/');
+          } else {
+            next();
+          }
+        }
       });
+      M.extend({
+        router: router
+      })
     },
     getHead: function () {  // 加载头部
       // 头部加载

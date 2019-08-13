@@ -8,7 +8,7 @@ require.config({
   baseUrl: 'src/base/js',
   paths: {
     jquery: 'lib/jquery-1.7.2.min',
-    text: 'lib/text',
+    render: 'lib/render',
     easing: 'lib/jquery.easing.1.3',
     parallax: 'lib/jquery-parallax',
     mousewheel: 'lib/jquery.mousewheel.min',
@@ -17,13 +17,10 @@ require.config({
     TopEsa: 'lib/TopEsa.minhttps-3.2.0.2',
     signMessage: 'lib/signMessage',
     qrcode: 'lib/jquery-qrcode-0.14.0.min',
-
+    router: 'lib/router',
     jqCommon: 'common/jq.common',
     renderView: 'common/render.view',
-    router: 'common/router',
     utils: 'common/utils',
-
-
     calendar: 'ui/base.calendar.2.0.0',
     calendarTwo: 'ui/calendar',
     cityQuery: 'ui/base.city.query',
@@ -55,7 +52,7 @@ require.config({
       deps: ['jquery']
     },
     renderView: {
-      deps: ['jquery', 'text']
+      deps: ['jquery', 'render']
     },
     router: {
       deps: ['jquery', 'jqCommon']
