@@ -1,0 +1,15 @@
+<style>
+  .zy {
+    color: red
+  }
+</style>
+<div class="zy">
+  page-log 登录页面
+</div>
+<script>
+  require(['utils'], function () {
+    M('.push').on('click', function () {
+      M.router.push('/goods')
+    })
+  })
+</script>
